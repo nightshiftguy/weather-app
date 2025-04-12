@@ -1,9 +1,13 @@
 import "./styles.css";
-import createAPILoader from "./APILoader";
 
-const APILoader = createAPILoader();
-APILoader.getInfo().then(APILoader.selectInfo).then(APILoader.showInfo);
 const container = document.querySelector(".container");
-const text = document.createElement("p");
-text.textContent = "Hello World!";
-container.appendChild(text);
+import createAPILoader from "./APILoader";
+import createDOMLoader from "./DOMLoader";
+const DOMLoader = createDOMLoader(container);
+const APILoader = createAPILoader();
+container.addEventListener("search-location",(event)=>{
+    console.log(event.location)
+    APILoader.getInfo(event.detail).then(APILoader.selectInfo).then(DOMLoader.showInfo);
+})
+
+
