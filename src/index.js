@@ -7,7 +7,7 @@ const DOMLoader = createDOMController(container);
 const APILoader = createAPILoader();
 container.addEventListener("search-location",(event)=>{
     DOMLoader.showLoading();
-    APILoader.getInfo(event.detail).then(APILoader.selectInfo).then(DOMLoader.showInfo);
+    APILoader.getInfo(event.detail).then(APILoader.selectInfo).then(DOMLoader.showInfo).catch(console.error);
 })
 
 

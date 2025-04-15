@@ -17,10 +17,16 @@ export default function createDOMController(container) {
 
   function showInfo(data) {
     infoContainer.textContent = "";
-    const currentConditionsDiv = currentConditions(data.currentConditions);
-    const forecastTableDiv = forecastTable(data.days);
-    infoContainer.appendChild(currentConditionsDiv);
-    infoContainer.appendChild(forecastTableDiv);
+    if (!data) {
+      const info = document.createElement("p");
+      info.textContent = "No results found";
+      infoContainer.appendChild(info);
+    } else {
+      const currentConditionsDiv = currentConditions(data.currentConditions);
+      const forecastTableDiv = forecastTable(data.days);
+      infoContainer.appendChild(currentConditionsDiv);
+      infoContainer.appendChild(forecastTableDiv);
+    }
   }
   return { showInfo, showLoading };
 }
