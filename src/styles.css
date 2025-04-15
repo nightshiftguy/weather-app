@@ -7,3 +7,36 @@ body {
   height: 2rem;
   width: 2rem;
 }
+
+.day-row{
+  display:flex;
+  justify-content: space-around;
+  align-items: center;
+  margin-bottom:10px;
+  background-color: rgb(12, 12, 12);
+}
+
+.container{
+  margin:0 auto;
+  width:60%;
+}
+
+.right > .weather-icon{
+  width:70px;
+  height:70px;
+}
+
+.current-conditions{
+  display:flex;
+}
+
+.current-conditions .left{
+  flex:2 1 0;
+}
+
+.current-conditions .right{
+  flex:1 1 0;
+  display: flex;
+  align-items: center;
+  gap:20px;
+}

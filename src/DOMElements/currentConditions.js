@@ -3,6 +3,7 @@ export default function currentConditions(currentConditionsInfo) {
   container.setAttribute("class", "current-conditions");
 
   const left = document.createElement("div");
+  left.setAttribute("class", "left");
   const addressParagraph = document.createElement("p");
   addressParagraph.textContent = currentConditionsInfo.address;
   const descriptionParagraph = document.createElement("p");
@@ -11,11 +12,16 @@ export default function currentConditions(currentConditionsInfo) {
   left.appendChild(descriptionParagraph);
 
   const right = document.createElement("div");
-  const iconParagraph = document.createElement("p");
-  iconParagraph.textContent = currentConditionsInfo.icon;
+  right.setAttribute("class", "right");
+  const img = document.createElement("img");
+  img.setAttribute("class", "weather-icon");
+  import(`../icons/${currentConditionsInfo.icon}.svg`).then((module) => {
+    img.setAttribute("src", module.default);
+  });
+  container.appendChild(img);
   const temperatureParagraph = document.createElement("p");
   temperatureParagraph.textContent = currentConditionsInfo.temperature;
-  right.appendChild(iconParagraph);
+  right.appendChild(img);
   right.appendChild(temperatureParagraph);
 
   container.appendChild(left);
