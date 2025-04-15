@@ -1,9 +1,14 @@
 export default function forecastDay(dayInfo){
     const container = document.createElement('div');
     for(let info in dayInfo) {
-        const infoParagraph = document.createElement("p");
-        infoParagraph.textContent=dayInfo[info];
-        container.appendChild(infoParagraph);
+        if(info==="icon"){
+            import(`../icons/${dayInfo[info]}.svg`).then(console.log())
+        }
+        else{
+            const infoParagraph = document.createElement("p");
+            infoParagraph.textContent=dayInfo[info];
+            container.appendChild(infoParagraph);
+        }
     }
 
     return container;

@@ -7,12 +7,15 @@ export default function search(){
     const search = document.createElement("input");
     search.setAttribute("type","search")
     search.setAttribute("id","location-search")
+    search.setAttribute("required","")
 
     const searchButton = document.createElement("button");
     searchButton.textContent="Search"
     searchButton.addEventListener("click",()=>{
-        const searchEvent = new CustomEvent("search-location", { detail: search.value, bubbles: true });
-        searchButton.dispatchEvent(searchEvent);
+        if(search.checkValidity()){
+            const searchEvent = new CustomEvent("search-location", { detail: search.value, bubbles: true });
+            searchButton.dispatchEvent(searchEvent);
+        }
     })
     container.appendChild(label)
     container.appendChild(search)

@@ -2,8 +2,8 @@ import "./styles.css";
 
 const container = document.querySelector(".container");
 import createAPILoader from "./APILoader";
-import createDOMLoader from "./DOMLoader";
-const DOMLoader = createDOMLoader(container);
+import createDOMController from "./DOMController";
+const DOMLoader = createDOMController(container);
 const APILoader = createAPILoader();
 container.addEventListener("search-location",(event)=>{
     DOMLoader.showLoading();

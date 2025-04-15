@@ -2,7 +2,7 @@ import currentConditions from "./DOMElements/currentConditions";
 import forecastTable from "./DOMElements/forecastTable";
 import search from "./DOMElements/search";
 
-export default function createDOMLoader(container){
+export default function createDOMController(container){
     const searchDiv = search();
     container.appendChild(searchDiv)
     const loadingParagraph = document.createElement("p");
