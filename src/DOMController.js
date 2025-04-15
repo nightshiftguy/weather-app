@@ -4,13 +4,16 @@ import search from "./DOMElements/search";
 
 export default function createDOMController(container) {
   const searchDiv = search();
+  searchDiv.setAttribute("class", "search-div");
   container.appendChild(searchDiv);
 
   const infoContainer = document.createElement("div");
+  infoContainer.setAttribute("class","info-container")
   container.appendChild(infoContainer);
 
   function showLoading() {
     const loadingParagraph = document.createElement("p");
+    loadingParagraph.setAttribute("class","loading")
     loadingParagraph.textContent = "loading...";
     infoContainer.appendChild(loadingParagraph);
   }
