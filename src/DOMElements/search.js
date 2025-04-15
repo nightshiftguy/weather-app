@@ -17,6 +17,12 @@ export default function search(){
             searchButton.dispatchEvent(searchEvent);
         }
     })
+    search.addEventListener("keyup",(event)=>{
+        if(search.checkValidity() && event.key == "Enter"){
+            const searchEvent = new CustomEvent("search-location", { detail: search.value, bubbles: true });
+            searchButton.dispatchEvent(searchEvent);
+        }
+    })
     container.appendChild(label)
     container.appendChild(search)
     container.appendChild(searchButton)
