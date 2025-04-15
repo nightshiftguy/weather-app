@@ -2,21 +2,25 @@ import currentConditions from "./DOMElements/currentConditions";
 import forecastTable from "./DOMElements/forecastTable";
 import search from "./DOMElements/search";
 
-export default function createDOMController(container){
-    const searchDiv = search();
-    container.appendChild(searchDiv)
-    const loadingParagraph = document.createElement("p");
-    function showLoading(){
-        loadingParagraph.textContent="loading...";
-        container.appendChild(loadingParagraph); 
-    }
+export default function createDOMController(container) {
+  const searchDiv = search();
+  container.appendChild(searchDiv);
 
-    function showInfo(data){
-        container.textContent=""
-        const currentConditionsDiv = currentConditions(data.currentConditions);
-        const forecastTableDiv = forecastTable(data.days);
-        container.appendChild(currentConditionsDiv);
-        container.appendChild(forecastTableDiv);
-    }
-    return {showInfo, showLoading};
+  const infoContainer = document.createElement("div");
+  container.appendChild(infoContainer);
+
+  function showLoading() {
+    const loadingParagraph = document.createElement("p");
+    loadingParagraph.textContent = "loading...";
+    infoContainer.appendChild(loadingParagraph);
+  }
+
+  function showInfo(data) {
+    infoContainer.textContent = "";
+    const currentConditionsDiv = currentConditions(data.currentConditions);
+    const forecastTableDiv = forecastTable(data.days);
+    infoContainer.appendChild(currentConditionsDiv);
+    infoContainer.appendChild(forecastTableDiv);
+  }
+  return { showInfo, showLoading };
 }
