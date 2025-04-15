@@ -6,7 +6,7 @@ import createDOMLoader from "./DOMLoader";
 const DOMLoader = createDOMLoader(container);
 const APILoader = createAPILoader();
 container.addEventListener("search-location",(event)=>{
-    console.log(event.location)
+    DOMLoader.showLoading();
     APILoader.getInfo(event.detail).then(APILoader.selectInfo).then(DOMLoader.showInfo);
 })
 
